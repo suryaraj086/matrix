@@ -157,7 +157,6 @@ public class Matrix {
 		}
 	}
 
-	
 	public int maximalRectangle(char[][] matrix) {
 		int count = 0;
 		int max = 0;
@@ -202,6 +201,27 @@ public class Matrix {
 		return 2 * max;
 	}
 
+	public int maximumOnes(int[][] matrix) {
+		int min = Integer.MIN_VALUE;
+		int count = 0;
+		int temp=0;
+		for (int i = 0; i < matrix.length; i++) {
+			for (int j = 0; j < matrix[0].length; j++) {
+				if (matrix[i][j] == 1) {
+					count++;
+				}
+			}
+			if(count>min)
+			{
+				temp=i;
+				min=count;
+			}
+			//min = Math.max(count, min);
+			count = 0;
+		}
+		return temp;
+	}
+
 	public static void main(String[] args) {
 		Matrix mObj = new Matrix();
 		Scanner scan = new Scanner(System.in);
@@ -230,8 +250,8 @@ public class Matrix {
 			break;
 		}
 		case 5: {
-			int mat[][] = { { 1, 1, 1, 1 }, { 2, 2, 2, 2 }, { 3, 3, 3, 3 }, { 4, 4, 4, 4 } };
-			System.out.println(Arrays.deepToString(transpose(mat, mat.length)));
+			int mat[][] = { { 1, 1, 1, 1 }, { 1, 1, 1, 1 }, { 3, 3, 3, 3 }, { 4, 4, 4, 4 } };
+			System.out.println(mObj.maximumOnes(mat));
 			break;
 		}
 		case 6: {
